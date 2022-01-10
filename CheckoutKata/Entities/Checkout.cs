@@ -3,6 +3,16 @@
     public class Checkout
     {
         private List<Item> _items = new List<Item>();
+        private List<SpecialOffer> _offers;
+
+        public Checkout()
+        {
+            _offers = new List<SpecialOffer>()
+            {
+                new SpecialOffer("A99", 3, 1.30M),
+                new SpecialOffer("B15", 2, 0.45M)
+            };
+        }
 
         public IEnumerable<Item> Items => _items.AsReadOnly();
 
