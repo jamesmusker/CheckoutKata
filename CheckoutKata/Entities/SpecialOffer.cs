@@ -1,4 +1,4 @@
-﻿namespace CheckoutKata
+﻿namespace CheckoutKata.SpecialOffer
 {
     public class SpecialOffer
     {
