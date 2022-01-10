@@ -28,7 +28,20 @@
 
         public void Scan(Item item)
         {
-            _items.Add(item);
+            var offer = (from o in _offers
+                        where o.SKU == item.SKU
+                        select o).FirstOrDefault();
+
+            int itemCount = Items.Count(i => i.SKU == item.SKU && !i.IsSpecialOffer) + 1;
+            if (itemCount >= offer?.Quantity)
+            {
+                _items.RemoveAll(i => i.SKU == offer.SKU && !i.IsSpecialOffer);
+                _items.Add(new SpecialOfferItem(item.SKU, offer.UnitPrice));
+            }
+            else
+            {
+                _items.Add(item);
+            }
         }
     }
 }
