@@ -98,5 +98,21 @@ namespace CheckoutKata.Tests.Unit.Entities
             decimal total = checkout.Total();
             total.Should().Be(1.75M);
         }
+
+        [Fact]
+        public void TotalIsCorrectWithDiscountsAndItems()
+        {
+            var checkout = new Checkout();
+            var item1 = new Item("A99", 0.5M);
+            var item2 = new Item("C40", 0.6M);
+
+            checkout.Scan(item1);
+            checkout.Scan(item2);
+            checkout.Scan(item1);
+            checkout.Scan(item1);
+
+            decimal total = checkout.Total();
+            total.Should().Be(1.9M);
+        }
     }
 }
