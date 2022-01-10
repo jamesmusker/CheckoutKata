@@ -76,9 +76,10 @@ namespace CheckoutKata.Tests.Unit.Entities
 
             checkout.Scan(item);
             checkout.Scan(item);
+            checkout.Scan(item);
 
             decimal total = checkout.Total();
-            total.Should().Be(1M);
+            total.Should().Be(1.3M);
         }
     }
 }
