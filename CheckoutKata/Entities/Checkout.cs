@@ -8,7 +8,12 @@
 
         public decimal Total()
         {
-            return 0M;
+            if (Items.Count() == 0)
+            {
+                return 0M;
+            }
+
+            return Items.Sum(i => i.UnitPrice);
         }
 
         public void Scan(Item item)
