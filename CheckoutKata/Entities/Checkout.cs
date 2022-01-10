@@ -13,7 +13,7 @@
 
         public void Scan(Item item)
         {
-
+            _items.Add(item);
         }
     }
 }
